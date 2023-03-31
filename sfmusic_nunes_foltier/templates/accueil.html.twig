@@ -10,7 +10,7 @@
 {% endblock %}
 
 {% block title %}
-Accueil 
+Spotwify
 {% endblock %}
 
 {% block body %}
@@ -23,7 +23,7 @@ Accueil
     <div class="collapse navbar-collapse" id="navbarColor01">
       <ul class="navbar-nav me-auto">
         <li class="nav-item">
-          <a class="nav-link active" href="#">Home
+          <a class="nav-link active" href="{{ path('drole') }}">Home
             <span class="visually-hidden">(current)</span>
           </a>
         </li>
@@ -32,7 +32,7 @@ Accueil
         </li>
         
       </ul>
-      <form class="d-flex">
+      <form class="d-flex flex-nowrap justify-content-center align-items-center m-2">
         <input class="form-control me-sm-2" type="search" placeholder="Search">
         <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
       </form>

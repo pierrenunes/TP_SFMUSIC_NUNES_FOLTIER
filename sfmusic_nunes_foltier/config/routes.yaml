@@ -2,6 +2,10 @@ controllers:
     resource: ../src/Controller/
     type: attribute
 
-hello:
+open:
     path: /
     controller: App\Controller\indexController::open
+
+drole:
+    path: /drole
+    controller: App\Controller\indexController::drole

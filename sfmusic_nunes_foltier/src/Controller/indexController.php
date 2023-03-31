@@ -8,7 +8,11 @@ class indexController extends AbstractController{
 /**
 * @Route("/")
 */
-public function open(){
-    return $this->render('accueil.html.twig');
+    public function open(){
+        return $this->render('accueil.html.twig');
+    }
+
+    public function drole(){
+        return $this->render('drole.html.twig');
     }
 }
