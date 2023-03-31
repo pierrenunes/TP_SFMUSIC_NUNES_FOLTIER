@@ -1,3 +1,7 @@
 controllers:
     resource: ../src/Controller/
     type: attribute
+
+hello:
+    path: /
+    controller: App\Controller\indexController::open
