@@ -39,6 +39,16 @@ class UtilisateurRepository extends ServiceEntityRepository
         }
     }
 
+    
+
+    public function findAllUsers(EntityManagerInterface $entityManager): array
+    {
+        $utilisateurs = $this->findAll();
+
+        return $utilisateurs;
+    }
+
+
 //    /**
 //     * @return Utilisateur[] Returns an array of Utilisateur objects
 //     */

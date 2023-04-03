@@ -87,6 +87,6 @@ class Utilisateur
 
     public function __toString()
     {
-        return $this->getPseudo();
+        return $this->getPseudo().' '.$this->getMDP();
     }
 }
