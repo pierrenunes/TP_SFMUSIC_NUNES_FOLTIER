@@ -1,8 +1,11 @@
 #accueil{
     background-image: url(../img/back.jpg);
-    background-size: 100vw 94vh;
+    background-size: 100vw 100vh;
     background-repeat: no-repeat;
-    min-height: 94vh;
+    min-height: 100vh;
     
 }
 
+#titre{
+    min-height: 89vh;
+}

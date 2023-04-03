@@ -14,8 +14,8 @@ SpotWify
 {% endblock %}
 
 {% block body %}
-
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+<div id="accueil">
+<nav class="navbar navbar-expand-lg navbar bg p-5">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">SpotWify</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
@@ -24,20 +24,21 @@ SpotWify
     <div class="collapse navbar-collapse" id="navbarColor01">
       <ul class="navbar-nav me-auto">
         <li class="nav-item">
-          <a class="nav-link btn btn-outline-secondary" href="{{ path('drole') }}">Home
+          <a class="nav-link btn btn-outline-secondary" href="{{ path('drole') }}">Test
             <span class="visually-hidden">(current)</span>
           </a>
         </li>
       </ul>
-      <a class="nav-link btn btn-secondary p-2" href="{{ path('drole') }}">Connexion
+      <a class="nav-link btn btn-secondary p-2" href="{{ path('connexion') }}">Connexion
         <span class="visually-hidden">(current)</span>
       </a>
     </div>
   </div>
 </nav>
 {% block content %}
-<div id="accueil" class="d-flex justify-content-center align-items-end">
+<div id="titre" class="d-flex justify-content-center align-items-end">
 <h1 class="h1 mb-5" style="font-size: 4em;">SpotWify</h1>
+</div>
 </div>
 {% endblock %}
 {% endblock %}

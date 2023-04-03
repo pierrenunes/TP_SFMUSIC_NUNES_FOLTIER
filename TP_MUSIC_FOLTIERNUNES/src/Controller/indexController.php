@@ -21,4 +21,11 @@ class indexController extends AbstractController{
             'utilisateur' => $utilisateurs->findAll()
         ]);
     }
+
+    /**
+* @Route("/connexion")
+*/
+    public function connexion(){
+        return $this->render('connexion.html.twig');
+    }
 }

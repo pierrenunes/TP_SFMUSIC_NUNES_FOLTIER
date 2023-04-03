@@ -9,3 +9,7 @@ open:
 drole:
     path: /test
     controller: App\Controller\indexController::drole
+
+connexion:
+    path: /connexion
+    controller: App\Controller\indexController::connexion
