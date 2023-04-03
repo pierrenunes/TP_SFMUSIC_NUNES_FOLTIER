@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Album{% endblock %}
+
+{% block body %}
+    <h1>Album</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ album.id }}</td>
+            </tr>
+            <tr>
+                <th>TitreAlbum</th>
+                <td>{{ album.titreAlbum }}</td>
+            </tr>
+            <tr>
+                <th>Date</th>
+                <td>{{ album.Date ? album.Date|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_album_index') }}">back to list</a>
+
+    <a href="{{ path('app_album_edit', {'id': album.id}) }}">edit</a>
+
+    {{ include('album/_delete_form.html.twig') }}
+{% endblock %}

@@ -1,0 +1,11 @@
+controllers:
+    resource: ../src/Controller/
+    type: attribute
+
+open:
+    path: /
+    controller: App\Controller\indexController::open
+
+drole:
+    path: /test
+    controller: App\Controller\indexController::drole
