@@ -1,0 +1,28 @@
+
+{% extends 'accueil.html.twig' %}
+
+{% block style %}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/axentix@0.5.3/dist/css/axentix.min.css">
+<link rel="stylesheet" href="../css/_bootswatch.scss">
+<link rel="stylesheet" href="../css/_variables.scss">
+<link rel="stylesheet" href="../css/boostrap.css">
+<link rel="stylesheet" href="../css/bootstrap.min.css">
+<link rel="stylesheet" href="../css/accueil.css">
+{% endblock %}
+
+{% block title %}
+SpotWify
+{% endblock %}
+
+
+{% block content %}
+
+<div>
+
+    <form enctype="multipart/form-data" action="{{ path('importer', {'verif':'TRUE'}) }}" method="post">
+		<input type="hidden" name="MAX_FILE_SIZE" value="30000" />
+		Importez ce fichier : <input name="userfile" type="file" />
+		<input type="submit" value="Importer" />
+	</form>
+</div>
+{% endblock %}

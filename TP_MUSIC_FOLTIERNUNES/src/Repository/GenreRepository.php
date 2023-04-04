@@ -5,7 +5,7 @@ namespace App\Repository;
 use App\Entity\Genre;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
-
+use Doctrine\ORM\EntityManagerInterface;
 /**
  * @extends ServiceEntityRepository<Genre>
  *
@@ -39,6 +39,12 @@ class GenreRepository extends ServiceEntityRepository
         }
     }
 
+    public function insert(EntityManagerInterface $entityManager,$nom){
+        $genre = new Genre();
+        $genre->setNomGenre($nom);
+        $entityManager->persist($genre);
+        $entityManager->flush();
+    }
 //    /**
 //     * @return Genre[] Returns an array of Genre objects
 //     */

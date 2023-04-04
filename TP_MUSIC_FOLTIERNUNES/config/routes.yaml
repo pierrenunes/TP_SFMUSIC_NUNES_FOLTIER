@@ -13,3 +13,7 @@ drole:
 connexion:
     path: /connexion
     controller: App\Controller\indexController::connexion
+
+importer:
+    path: /importer/{verif}
+    controller: App\Controller\indexController::importer

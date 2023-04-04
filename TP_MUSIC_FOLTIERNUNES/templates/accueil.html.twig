@@ -29,7 +29,10 @@ SpotWify
           </a>
         </li>
       </ul>
-      <a class="nav-link btn btn-secondary p-2" href="{{ path('connexion') }}">Connexion
+      <a class="nav-link btn  btn-outline-secondary p-2 m-2" href="{{ path('importer', {'verif':'FALSE'}) }}">Importer
+        <span class="visually-hidden">(current)</span>
+      </a>
+      <a class="nav-link btn btn-secondary p-2 m-2" href="{{ path('connexion') }}">Connexion
         <span class="visually-hidden">(current)</span>
       </a>
     </div>

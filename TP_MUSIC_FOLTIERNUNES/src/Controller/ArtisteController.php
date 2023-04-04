@@ -75,4 +75,6 @@ class ArtisteController extends AbstractController
 
         return $this->redirectToRoute('app_artiste_index', [], Response::HTTP_SEE_OTHER);
     }
+
+    
 }

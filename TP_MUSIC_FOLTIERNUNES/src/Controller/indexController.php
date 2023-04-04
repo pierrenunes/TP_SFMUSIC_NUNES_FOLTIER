@@ -8,6 +8,7 @@ use App\Repository\UtilisateurRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Console\Output\ConsoleOutput;
 use App\Entity\Utilisateur;
+use App\Repository\GenreRepository;
 use Doctrine\ORM\EntityManagerInterface;
 
 
@@ -52,5 +53,28 @@ class indexController extends AbstractController{
 
 
         return $this->render('connexion.html.twig');
+    }
+
+    /**
+* @Route("/importer/{verif}")
+*/
+    public function importer($verif,GenreRepository $genreRepo,EntityManagerInterface $entityManager){
+        $output = new ConsoleOutput();
+        if($verif=='TRUE'){
+            $uploaddir = '../import/';
+            $uploadfile = $uploaddir.basename($_FILES['userfile']['name']);
+
+            move_uploaded_file($_FILES['userfile']['tmp_name'], $uploadfile);
+            $json = file_get_contents("../import/".$_FILES['userfile']['full_path']);
+            $BD = json_decode($json,TRUE);
+            
+            foreach($BD['BD'][0]['Genre'] as $elem){
+                $genreRepo->insert($entityManager,$elem);
+            }
+            return $this->render('import.html.twig',['BD' => $BD]);
+        }
+        
+
+        return $this->render('import.html.twig');
     }
 }
