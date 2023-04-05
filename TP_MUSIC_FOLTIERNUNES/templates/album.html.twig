@@ -15,10 +15,11 @@ SpotWify
 
 
 {% block content %}
-<div>
-{% for elem in utilisateur %}
-    <p>{{ elem.mdp }}<p>
+<div class="d-flex flex-wrap justify-content-center align-items-center" style="min-height:89vh;">
+<button type="button" class="btn btn-primary"> < </button>
+{% for elem in album %}
+    <img class="m-2" src="{{ elem.url }}" alt="" style="height: 20vh;width: 15vw;border-radius:10px;">
 {% endfor %}
-
+<button type="button" class="btn btn-primary"> > </button>
 </div>
 {% endblock %}

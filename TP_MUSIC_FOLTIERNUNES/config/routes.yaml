@@ -6,9 +6,9 @@ open:
     path: /
     controller: App\Controller\indexController::open
 
-drole:
-    path: /test
-    controller: App\Controller\indexController::drole
+album:
+    path: /repertoireAlbum
+    controller: App\Controller\indexController::album
 
 connexion:
     path: /connexion

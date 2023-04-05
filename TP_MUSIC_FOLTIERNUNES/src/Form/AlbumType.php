@@ -14,6 +14,7 @@ class AlbumType extends AbstractType
         $builder
             ->add('titreAlbum')
             ->add('Date')
+            ->add('Url')
         ;
     }
 

@@ -13,7 +13,7 @@ use App\Repository\AlbumRepository;
 use App\Repository\ArtisteRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Repository\MusiqueRepository;
-
+use App\Entity\Album;
 
 
 class indexController extends AbstractController{
@@ -26,11 +26,12 @@ class indexController extends AbstractController{
     }
 
 /**
-* @Route("/test")
+* @Route("/repertoireAlbum")
 */
-    public function drole(UtilisateurRepository $utilisateurs){
-        return $this->render('test.html.twig', [
-            'utilisateur' => $utilisateurs->findAll()
+    public function album(EntityManagerInterface $entity){
+        $album = $entity->getRepository(Album::class)->findBy([], [], 5);
+        return $this->render('album.html.twig', [
+            'album' => $album
         ]);
     }
 

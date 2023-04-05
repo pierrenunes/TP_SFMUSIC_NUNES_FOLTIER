@@ -22,11 +22,13 @@ class Album
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     private ?\DateTimeInterface $Date = null;
 
+    #[ORM\Column(length: 255)]
+    private ?string $url = null;
+
     #[ORM\OneToMany(mappedBy: 'Album', targetEntity: Musique::class)]
     private Collection $musiques;
 
-    #[ORM\Column(length: 255)]
-    private ?string $url = null;
+    
 
     public function __construct()
     {
