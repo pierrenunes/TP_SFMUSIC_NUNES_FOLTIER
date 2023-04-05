@@ -7,7 +7,7 @@ open:
     controller: App\Controller\indexController::open
 
 album:
-    path: /repertoireAlbum
+    path: /repertoireAlbum/{verif}/{cpt}
     controller: App\Controller\indexController::album
 
 connexion:
@@ -17,3 +17,7 @@ connexion:
 importer:
     path: /importer/{verif}
     controller: App\Controller\indexController::importer
+
+recherche:
+    path: /recherche/{verif}
+    controller: App\Controller\indexController::recherche

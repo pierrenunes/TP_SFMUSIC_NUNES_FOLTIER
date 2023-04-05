@@ -10,3 +10,42 @@
     min-height: 89vh;
 }
 
+.sous{
+    border-color: rgba(247, 247, 247, 0.125);
+    border: var(--bs-card-border-width) solid var(--bs-card-border-color);
+	border-radius: var(--bs-card-border-radius);
+    display: none;
+    box-shadow: 0px 1px 2px #CCC;
+    margin-top: 80%;
+    margin-left: 10%;
+    background-color: white;
+    position: absolute;
+    width: 80%;
+    z-index: 1000;
+}
+
+#repertoire > ul li:hover .sous{
+    display: block;
+}
+.sous li{
+    float: none;
+    width: 100%;
+    text-align: left;
+}
+.sous a::after{
+    padding: 10px;
+    border-bottom: none;
+}
+.sous a:hover{
+    border-bottom: none;
+    background-color: RGBa(200,200,200,0.1);
+}
+
+
+#info {
+    border: 2px solid #00FFFF;
+    border-radius: 5px;
+    padding: 10px;
+    background: none;
+    list-style-type: none;
+  }

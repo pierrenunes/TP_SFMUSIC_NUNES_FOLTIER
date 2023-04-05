@@ -26,16 +26,26 @@ class indexController extends AbstractController{
     }
 
 /**
-* @Route("/repertoireAlbum")
+* @Route("/repertoireAlbum/{verif}")
 */
-    public function album(EntityManagerInterface $entity){
-        $album = $entity->getRepository(Album::class)->findBy([], [], 5);
+    public function album(EntityManagerInterface $entity,$verif,$cpt){
+        if($verif=="+"){
+            $cpt+=5;
+        }
+        else if($verif=="-"){
+            if($cpt!=5){
+                $cpt-=5;
+            }
+        }
+        $cpt2 = $cpt-5;
+        $album = $entity->getRepository(Album::class)->findBy([], [], $cpt,$cpt2);
         return $this->render('album.html.twig', [
-            'album' => $album
+            'album' => $album,
+            'cpt' => $cpt
         ]);
     }
 
-    /**
+/**
 * @Route("/connexion")
 */
     public function connexion(Request $request,UtilisateurRepository $utilisateurs,EntityManagerInterface $entity){
@@ -90,5 +100,15 @@ class indexController extends AbstractController{
         
 
         return $this->render('import.html.twig');
+    }
+
+    /**
+* @Route("/recherche/{verif}")
+*/
+    public function recherche(EntityManagerInterface $entity){
+        $resRecherche = $entity->getRepository(Album::class)->findBy([], [], [], []);
+        return $this->render('recherche.html.twig', [
+            'res' => $resRecherche,
+        ]);
     }
 }

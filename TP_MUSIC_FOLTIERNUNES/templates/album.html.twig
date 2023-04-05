@@ -2,11 +2,13 @@
 
 {% block style %}
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/axentix@0.5.3/dist/css/axentix.min.css">
-<link rel="stylesheet" href="css/_bootswatch.scss">
-<link rel="stylesheet" href="css/_variables.scss">
-<link rel="stylesheet" href="css/boostrap.css">
-<link rel="stylesheet" href="css/bootstrap.min.css">
-<link rel="stylesheet" href="css/accueil.css">
+<link rel="stylesheet" href="../../css/_bootswatch.scss">
+<link rel="stylesheet" href="../../css/_variables.scss">
+<link rel="stylesheet" href="../../css/boostrap.css">
+<link rel="stylesheet" href="../../css/bootstrap.min.css">
+<link rel="stylesheet" href="../../css/accueil.css">
+<link href="../../css/recherche.css" rel="stylesheet" />
+
 {% endblock %}
 
 {% block title %}
@@ -15,11 +17,24 @@ SpotWify
 
 
 {% block content %}
-<div class="d-flex flex-wrap justify-content-center align-items-center" style="min-height:89vh;">
-<button type="button" class="btn btn-primary"> < </button>
+<div id="repertoire" class="d-flex flex-wrap justify-content-center align-items-center" style="min-height:85vh;">
+<a href="{{ path('album',{'verif':'-','cpt':cpt}) }}"><button type="button" class="btn btn-primary"> < </button></a>
+<ul class=" d-flex flex-nowrap justify-content-between align-content-center">
 {% for elem in album %}
-    <img class="m-2" src="{{ elem.url }}" alt="" style="height: 20vh;width: 15vw;border-radius:10px;">
+<li class="deroulant list-group-item d-flex justify-content-between align-content-center">
+    <a href="#">
+        <img class="m-2" src="../../{{ elem.url }}" alt="" style="height: 20vh;width: 15vw;border-radius:10px; border: 5px solid #ff6ec7; box-shadow: 0 0 10px #ff6ec7;">
+    </a>
+    <ul class="sous" id="info">
+        <li><a href="#">Titre :{{ elem.titrealbum }}</a></li>
+        {% for art in elem.getMusiques() %}
+        <li><a href="#">Artiste : {{ art.getArtiste() }} </a></li>
+        {% endfor %}
+        <li><a href="#">Date :{{ elem.Date.format('d/m/Y') }} </a></li>
+    </ul>
+</li>
 {% endfor %}
-<button type="button" class="btn btn-primary"> > </button>
+</ul>
+<a href="{{ path('album',{'verif':'+','cpt':cpt }) }}"><button type="button" class="btn btn-primary"> > </button></a>
 </div>
 {% endblock %}

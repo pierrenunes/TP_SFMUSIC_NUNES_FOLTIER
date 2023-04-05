@@ -24,11 +24,14 @@ SpotWify
     <div class="collapse navbar-collapse" id="navbarColor01">
       <ul class="navbar-nav me-auto">
         <li class="nav-item">
-          <a class="nav-link btn btn-outline-secondary" href="{{ path('album') }}"> Albums
+          <a class="nav-link btn btn-outline-secondary" href="{{ path('album',{'verif':'FALSE','cpt':5}) }}"> Albums
             <span class="visually-hidden">(current)</span>
           </a>
         </li>
       </ul>
+      <a class="nav-link btn  btn-outline-secondary p-2 m-2" href="{{ path('recherche', {'verif':'FALSE'}) }}">Rechercher
+        <span class="visually-hidden">(current)</span>
+      </a>
       <a class="nav-link btn  btn-outline-secondary p-2 m-2" href="{{ path('importer', {'verif':'FALSE'}) }}">Importer
         <span class="visually-hidden">(current)</span>
       </a>
