@@ -5,7 +5,7 @@ namespace App\Repository;
 use App\Entity\Artiste;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
-
+use Doctrine\ORM\EntityManagerInterface;
 /**
  * @extends ServiceEntityRepository<Artiste>
  *
@@ -37,6 +37,13 @@ class ArtisteRepository extends ServiceEntityRepository
         if ($flush) {
             $this->getEntityManager()->flush();
         }
+    }
+    public function insert(EntityManagerInterface $entityManager,$prenom,$nom){
+        $artiste = new Artiste();
+        $artiste->setPrenom($prenom);
+        $artiste->setNom($nom);
+        $entityManager->persist($artiste);
+        $entityManager->flush();
     }
 
 //    /**

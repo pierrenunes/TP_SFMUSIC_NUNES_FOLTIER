@@ -5,6 +5,7 @@ namespace App\Repository;
 use App\Entity\Album;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use Doctrine\ORM\EntityManagerInterface;
 
 /**
  * @extends ServiceEntityRepository<Album>
@@ -37,6 +38,14 @@ class AlbumRepository extends ServiceEntityRepository
         if ($flush) {
             $this->getEntityManager()->flush();
         }
+    }
+
+    public function insert(EntityManagerInterface $entityManager,$nom,$date){
+        $album = new Album();
+        $album->setTitreAlbum($nom);
+        $album->setDate(date_create($date));
+        $entityManager->persist($album);
+        $entityManager->flush();
     }
 
 //    /**

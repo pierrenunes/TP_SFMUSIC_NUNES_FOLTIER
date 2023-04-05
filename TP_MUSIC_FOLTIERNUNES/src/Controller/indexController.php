@@ -9,7 +9,10 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Console\Output\ConsoleOutput;
 use App\Entity\Utilisateur;
 use App\Repository\GenreRepository;
+use App\Repository\AlbumRepository;
+use App\Repository\ArtisteRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use App\Repository\MusiqueRepository;
 
 
 
@@ -58,7 +61,7 @@ class indexController extends AbstractController{
     /**
 * @Route("/importer/{verif}")
 */
-    public function importer($verif,GenreRepository $genreRepo,EntityManagerInterface $entityManager){
+    public function importer($verif,GenreRepository $genreRepo,AlbumRepository $albumRepo,ArtisteRepository $artisteRepo,MusiqueRepository $musiqueRepo,EntityManagerInterface $entityManager){
         $output = new ConsoleOutput();
         if($verif=='TRUE'){
             $uploaddir = '../import/';
@@ -70,6 +73,18 @@ class indexController extends AbstractController{
             
             foreach($BD['BD'][0]['Genre'] as $elem){
                 $genreRepo->insert($entityManager,$elem);
+            }
+            foreach($BD['BD'][0]['Album'] as $elem){
+                $albumRepo->insert($entityManager,$elem['Titre'],$elem['Date']);
+
+            }
+            foreach($BD['BD'][0]['Artiste'] as $elem){
+                $artisteRepo->insert($entityManager,$elem,'');
+
+            }
+            foreach($BD['BD'][0]['Musique'] as $elem){
+                $musiqueRepo->insert($entityManager,$elem['Titre'],$elem['Date'],$elem['Album'],$elem['Artiste'],$elem['Genre']);
+
             }
             return $this->render('import.html.twig',['BD' => $BD]);
         }

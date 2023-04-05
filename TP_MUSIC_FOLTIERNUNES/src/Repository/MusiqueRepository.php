@@ -3,9 +3,12 @@
 namespace App\Repository;
 
 use App\Entity\Musique;
+use App\Entity\Genre;
+use App\Entity\Album;
+use App\Entity\Artiste;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
-
+use Doctrine\ORM\EntityManagerInterface;
 /**
  * @extends ServiceEntityRepository<Musique>
  *
@@ -37,6 +40,19 @@ class MusiqueRepository extends ServiceEntityRepository
         if ($flush) {
             $this->getEntityManager()->flush();
         }
+    }
+    public function insert(EntityManagerInterface $entityManager,$titre,$date,$album,$artiste,$genre){
+        $musique = new Musique();
+        $musique->setTitreMusique($titre);
+        $musique->setDate(date_create($date));
+        $genrev = $entityManager->getRepository(Genre::class)->find($genre);
+        $musique->addGenre($genrev);
+        $artistev = $entityManager->getRepository(Artiste::class)->find($artiste);
+        $musique->setArtiste($artistev);
+        $albumv = $entityManager->getRepository(Album::class)->find($album);
+        $musique->setAlbum($albumv);
+        $entityManager->persist($musique);
+        $entityManager->flush();
     }
 
 //    /**
