@@ -25,6 +25,9 @@ class Album
     #[ORM\OneToMany(mappedBy: 'Album', targetEntity: Musique::class)]
     private Collection $musiques;
 
+    #[ORM\Column(length: 255)]
+    private ?string $url = null;
+
     public function __construct()
     {
         $this->musiques = new ArrayCollection();
@@ -92,5 +95,17 @@ class Album
     public function __toString()
     {
         return $this->getTitreAlbum();
+    }
+
+    public function getUrl(): ?string
+    {
+        return $this->url;
+    }
+
+    public function setUrl(string $url): self
+    {
+        $this->url = $url;
+
+        return $this;
     }
 }

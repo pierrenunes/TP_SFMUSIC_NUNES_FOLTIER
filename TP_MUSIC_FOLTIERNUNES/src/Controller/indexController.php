@@ -45,8 +45,6 @@ class indexController extends AbstractController{
         $output = new ConsoleOutput();
         $output->writeln($user);
         foreach( $user as &$val ){
-            $output->writeln('--------------------------------------');
-            $output->writeln($val);
             if( $val->getMDP() == $query2){
                 if( $val->getPseudo()== $query){
                     return $this->render('accueil.html.twig',[ 'log' => TRUE, 'pseudo' => $query ]);
@@ -75,7 +73,7 @@ class indexController extends AbstractController{
                 $genreRepo->insert($entityManager,$elem);
             }
             foreach($BD['BD'][0]['Album'] as $elem){
-                $albumRepo->insert($entityManager,$elem['Titre'],$elem['Date']);
+                $albumRepo->insert($entityManager,$elem['Titre'],$elem['Date'],$elem['URL']);
 
             }
             foreach($BD['BD'][0]['Artiste'] as $elem){

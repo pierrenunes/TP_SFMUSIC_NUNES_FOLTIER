@@ -40,10 +40,11 @@ class AlbumRepository extends ServiceEntityRepository
         }
     }
 
-    public function insert(EntityManagerInterface $entityManager,$nom,$date){
+    public function insert(EntityManagerInterface $entityManager,$nom,$date,$url){
         $album = new Album();
         $album->setTitreAlbum($nom);
         $album->setDate(date_create($date));
+        $album->setUrl($url);
         $entityManager->persist($album);
         $entityManager->flush();
     }
