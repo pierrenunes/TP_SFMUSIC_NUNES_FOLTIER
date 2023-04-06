@@ -19,5 +19,5 @@ importer:
     controller: App\Controller\indexController::importer
 
 recherche:
-    path: /recherche/{verif}
+    path: /recherche
     controller: App\Controller\indexController::recherche

@@ -13,7 +13,10 @@ use App\Repository\AlbumRepository;
 use App\Repository\ArtisteRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Repository\MusiqueRepository;
+use App\Entity\Musique;
+use App\Entity\Genre;
 use App\Entity\Album;
+use App\Entity\Artiste;
 
 
 class indexController extends AbstractController{
@@ -58,11 +61,10 @@ class indexController extends AbstractController{
         foreach( $user as &$val ){
             if( $val->getMDP() == $query2){
                 if( $val->getPseudo()== $query){
-                    return $this->render('accueil.html.twig',[ 'log' => TRUE, 'pseudo' => $query ]);
+                    return $getAlbum();
                 }
             }
         }
-
 
         return $this->render('connexion.html.twig');
     }
@@ -103,12 +105,36 @@ class indexController extends AbstractController{
     }
 
     /**
-* @Route("/recherche/{verif}")
+* @Route("/recherche")
 */
-    public function recherche(EntityManagerInterface $entity){
-        $resRecherche = $entity->getRepository(Album::class)->findBy([], [], [], []);
+    public function recherche(Request $request,EntityManagerInterface $entity,MusiqueController $music){
+        $output = new ConsoleOutput();
+        $choix = $request->query->get('choices-single-defaul');
+        $rep = $request->query->get('keyword_search');
+        $listres = array();
+        if($choix=='Artiste'){
+            $artiste = $entity->getRepository(Artiste::class)->findBy(['Prenom' => $rep]);
+            $resRecherche = $entity->getRepository(Musique::class)->findBy(['Artiste' => $artiste]);
+            foreach( $resRecherche as $elem ){
+                array_push($listres, $elem);
+            }
+        }
+        else if($choix=='Annee'){
+            $resRecherche = $entity->getRepository(Musique::class)->findBy(['Date' => date_create($rep)]);
+            foreach( $resRecherche as $elem ){
+                array_push($listres, $elem);
+            }
+        }
+        else if($choix=='Genre'){
+            $genre = $entity->getRepository(Genre::class)->findBy(['nomGenre' => 'rock']);
+            var_dump($genre);
+            $resRecherche = $entity->getRepository(Musique::class)->findBy(['Genre' => $genre]);
+            foreach( $resRecherche as $elem ){
+                array_push($listres, $elem);
+            }
+        }
         return $this->render('recherche.html.twig', [
-            'res' => $resRecherche,
+            'res' => $listres,
         ]);
     }
 }

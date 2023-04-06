@@ -811,13 +811,9 @@ legend {
 }
 
 .s003 {
-  min-height: 100vh;
-  display: -ms-flexbox;
   display: flex;
-  -ms-flex-pack: center;
-      justify-content: center;
-  -ms-flex-align: center;
-      align-items: center;
+  justify-content: center;
+  align-items: start;
   font-family: 'Poppins', sans-serif;
   background-size: cover;
   background-position: center center;

@@ -18,7 +18,7 @@ SpotWify
 
 {% block content %}
 <div id="repertoire" class="d-flex flex-wrap justify-content-center align-items-center" style="min-height:85vh;">
-<a href="{{ path('album',{'verif':'-','cpt':cpt}) }}"><button type="button" class="btn btn-primary"> < </button></a>
+<a href="{{ path('album',{'verif':'-','cpt':cpt}) }}" class="m-2"><button type="button" class="btn btn-primary"> < </button></a>
 <ul class=" d-flex flex-nowrap justify-content-between align-content-center">
 {% for elem in album %}
 <li class="deroulant list-group-item d-flex justify-content-between align-content-center">
@@ -35,6 +35,6 @@ SpotWify
 </li>
 {% endfor %}
 </ul>
-<a href="{{ path('album',{'verif':'+','cpt':cpt }) }}"><button type="button" class="btn btn-primary"> > </button></a>
+<a href="{{ path('album',{'verif':'+','cpt':cpt }) }}" class="m-2"><button type="button" class="btn btn-primary"> > </button></a>
 </div>
 {% endblock %}

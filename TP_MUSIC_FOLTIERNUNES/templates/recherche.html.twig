@@ -17,7 +17,7 @@ SpotWify
 
 {% block content %}
 <div class="s003">
-  <form>
+  <form enctype="multipart/form-data" action="{{ path('recherche') }}" method="GET">
     <div class="inner-form">
       <div class="input-field first-wrap">
         <div class="input-select">
@@ -29,9 +29,7 @@ SpotWify
         </div>
       </div>
       <div class="input-field second-wrap">
-        <form role="form" method="post" action="{{ path('recherche', {'verif':'+'}) }}">
-          <input type="textfield" name="keyword_search" class="form-control" id="search" placeholder="Une idée ?">
-        </form>
+        <input type="textfield" name="keyword_search" class="form-control" id="search" placeholder="Une idée ?">
       </div>
       <div class="input-field third-wrap">
         <button class="btn-search" type="submit" name="btn_search">
@@ -43,20 +41,26 @@ SpotWify
     </div>
   </form>
 </div>
+<div>
+<div id="repertoire" class="d-flex flex-wrap justify-content-center align-items-center" >
+<ul class=" d-flex flex-nowrap justify-content-between align-content-center">
 {% for elem in res %}
 <li class="deroulant list-group-item d-flex justify-content-between align-content-center">
-    <a href="#">
-        <img class="m-2" src="../../{{ elem.url }}" alt="" style="height: 20vh;width: 15vw;border-radius:10px; border: 5px solid #ff6ec7; box-shadow: 0 0 10px #ff6ec7;">
+     <a href="#">
+        <img class="m-2" src="../../{{ elem.getAlbum().url }}" alt="" style="height: 20vh;width: 15vw;border-radius:10px; border: 5px solid #ff6ec7; box-shadow: 0 0 10px #ff6ec7;">
     </a>
     <ul class="sous" id="info">
-        <li><a href="#">Titre :{{ elem.titrealbum }}</a></li>
-        {% for art in elem.getMusiques() %}
+        <li><a href="#">Titre :{{ elem.getAlbum().titrealbum }}</a></li>
+        {% for art in elem.getAlbum().getMusiques() %}
         <li><a href="#">Artiste : {{ art.getArtiste() }} </a></li>
         {% endfor %}
-        <li><a href="#">Date :{{ elem.Date.format('d/m/Y') }} </a></li>
+        <li><a href="#">Date :{{ elem.getAlbum().Date.format('d/m/Y') }} </a></li>
     </ul>
 </li>
 {% endfor %}
+</ul>
+</div>
+</div>
 <script src="../../js/extention/choices.js"></script>
 <script>
   const choices = new Choices('[data-trigger]',
