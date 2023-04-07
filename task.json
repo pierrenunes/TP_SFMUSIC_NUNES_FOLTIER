@@ -5,43 +5,53 @@
         "Album": [
             {
                 "Titre": "Thriller",
-                "Date": "1982-01-01"
+                "Date": "1982-01-01",
+                "URL": "img/image1.jpg"
             },
             {
                 "Titre": "Nevermind",
-                "Date": "1991-01-01"
+                "Date": "1991-01-01",
+                "URL": "img/image2.jpg"
             },
             {
                 "Titre": "The Dark Side of the Moon",
-                "Date": "1973-01-01"
+                "Date": "1973-01-01",
+                "URL": "img/image3.jpg"
             },
             {
                 "Titre": "Abbey Road",
-                "Date": "1969-01-01"
+                "Date": "1969-01-01",
+                "URL": "img/image4.jpg"
             },
             {
                 "Titre": "The Eminem Show",
-                "Date": "2002-01-01"
+                "Date": "2002-01-01",
+                "URL": "img/image5.jpg"
             },
             {
                 "Titre": "21",
-                "Date": "2011-01-01"
+                "Date": "2011-01-01",
+                "URL": "img/image6.jpg"
             },
             {
                 "Titre": "Back in Black",
-                "Date": "1980-01-01"
+                "Date": "1980-01-01",
+                "URL": "img/image7.jpg"
             },
             {
                 "Titre": "The Joshua Tree",
-                "Date": "1987-01-01"
+                "Date": "1987-01-01",
+                "URL": "img/image8.jpg"
             },
             {
                 "Titre": "Legend",
-                "Date": "1984-01-01"
+                "Date": "1984-01-01",
+                "URL": "img/image9.jpg"
             },
             {
                 "Titre": "Goodbye Yellow Brick Road",
-                "Date": "1973-01-01"
+                "Date": "1973-01-01",
+                "URL": "img/image10.jpg"
             }
         ],
         "Artiste":["Beyoncé","Drake","Taylor Swift","Kendrick Lamar","Adele"],
